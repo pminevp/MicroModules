@@ -63,13 +63,9 @@ namespace MicroModules.Login.Contract
         {
             repository.EditUser(Editeduser);
         }
-
-
-
-
     }
 
-    public sealed class SecurePasswordHasher
+     sealed class SecurePasswordHasher
     {
         /// <summary>
         /// Size of salt
