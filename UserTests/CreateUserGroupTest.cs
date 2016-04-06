@@ -22,7 +22,7 @@ namespace UserTests
         {
             var usrGroup = new UserGroup { AccessFormName= "Administrator", GroupId=1 };
 
-            IUser usr = new User { UserName="pm", password="123", Fammily="aa", FirstName="ee", permissions= new System.Collections.Generic.List<IUserGroup> { usrGroup } };
+            IUser usr = new User { UserName="pm2", password="123", Fammily="aa", FirstName="ee", permissions= new System.Collections.Generic.List<IUserGroup> { usrGroup } };
 
             var usrm = new UserManager(constring);
             usr= usrm.Create(usr);
@@ -33,8 +33,9 @@ namespace UserTests
         [TestMethod]
         public void GetUserGroups()
         {
+            IUser usr =new User();
             var usrm = new UserGroupManager(constring);
-            var allgroups=usrm.GetGroups();
+            var allgroups=usrm.GetGroups(usr);
         }
 
         [TestMethod]
@@ -49,7 +50,7 @@ namespace UserTests
         {
             var usrm = new UserManager(constring);
 
-            var user = usrm.Login("pm", "123");
+            var user = usrm.Login("pm2", "125");
         }
     }
 }

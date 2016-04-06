@@ -55,6 +55,27 @@ namespace MicroModules.Login.DataAccess
             return usr;
         }
 
+        public IUser GetUserByUserName(string userName)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection sqlcon = new SqlConnection(_conString);
+
+            SqlCommand sqlcmd = new SqlCommand("proc_GetHashedPassword", sqlcon);
+            sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlcmd.Parameters.Add(new SqlParameter("@UserName", userName));
+
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcmd);
+            sda.Fill(dt);
+
+            IUser usr = ParseUserFromTable(dt);
+
+            usr.permissions = GetUserGroup(usr.userId);
+
+            return usr;
+        }
+
+
         /// <summary>
         /// Edit USer profile Data
         /// </summary>
@@ -98,13 +119,19 @@ namespace MicroModules.Login.DataAccess
 
         public IUser ParseUserFromTable(DataTable dt)
         {
+            if (dt.Rows.Count == 0)
+                return new User();
+
             return new User
             {
                 userId = int.Parse(dt.Rows[0]["UserId"].ToString()),
                 UserName = dt.Rows[0]["UserName"].ToString(),
                 FirstName = dt.Rows[0]["FirstName"].ToString(),
-                Fammily = dt.Rows[0]["LastName"].ToString()
+                Fammily = dt.Rows[0]["LastName"].ToString(),
+                password = dt.Rows[0]["Password"] != null ? dt.Rows[0]["Password"].ToString() : ""
             };
         }
+
+
     }
 }

@@ -32,7 +32,7 @@ namespace MicroModules.Login.Managers
             return _userGroup;
         }
 
-        public List<IUserGroup>GetGroups()
+        public List<IUserGroup>GetGroups(IUser loggedUser)
         {
             if(loggedUser.permissions==null || loggedUser.permissions.Count==0)
             {

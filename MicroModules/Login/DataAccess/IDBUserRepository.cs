@@ -10,5 +10,6 @@ namespace MicroModules.Login.DataAccess
         void EditUser(IUser newUser);
         IUser Login(string userName, string password);
         IUser ParseUserFromTable(DataTable dt);
+        IUser GetUserByUserName(string userName);
     }
 }
