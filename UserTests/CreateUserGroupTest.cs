@@ -17,11 +17,10 @@ namespace UserTests
             groupM.CreateGroup("Administrator");
         }
 
-
         [TestMethod]
         public void NewUser()
         {
-            var usrGroup = new UserGroup { Name= "Administrator", GroupId=1 };
+            var usrGroup = new UserGroup { AccessFormName= "Administrator", GroupId=1 };
 
             IUser usr = new User { UserName="pm", password="123", Fammily="aa", FirstName="ee", permissions= new System.Collections.Generic.List<IUserGroup> { usrGroup } };
 

@@ -47,6 +47,8 @@
     <Compile Include="Login\Contract\UserGroup.cs" />
     <Compile Include="Login\DataAccess\DBStore.cs" />
     <Compile Include="Login\DataAccess\DBUserRepository.cs" />
+    <Compile Include="Login\DataAccess\IDBStore.cs" />
+    <Compile Include="Login\DataAccess\IDBUserRepository.cs" />
     <Compile Include="Login\Managers\UserGroupManager.cs" />
     <Compile Include="Login\Managers\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
