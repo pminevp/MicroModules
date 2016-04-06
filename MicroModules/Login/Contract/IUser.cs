@@ -10,5 +10,6 @@ namespace MicroModules.Login.Contract
         string FirstName { get; set; }
         string Fammily { get; set; }
         List<IUserGroup> permissions { get; set; }
+        bool ModuleAccess(string moduleName);
      }
 }

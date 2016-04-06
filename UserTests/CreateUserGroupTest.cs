@@ -50,7 +50,10 @@ namespace UserTests
         {
             var usrm = new UserManager(constring);
 
-            var user = usrm.Login("pm2", "125");
+            var user = usrm.Login("pm2", "123");
+
+            bool accessAdministrativeTools = user.ModuleAccess("Administrative tools");
+            bool isAdministrator = user.ModuleAccess("Administrator");
         }
     }
 }

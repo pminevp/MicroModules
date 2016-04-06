@@ -25,7 +25,7 @@ namespace MicroModules.Login.Contract
         {
             var module = permissions.FirstOrDefault(x => x.AccessFormName == moduleName);
 
-            if (moduleName != null && moduleName.Count() > 0)
+            if (module != null)
                 return true;
 
             return false;
